@@ -38,16 +38,7 @@ body {
     width: 50%;
     background:
         linear-gradient(rgba(25,65,42,0.2), rgba(25,65,42,0.45)),
-       url("/static/images/new-dry-fruits.jpg") center/cover no-repeat;
-}
-
-.left h1 {
-    font-size: 38px;
-    margin-bottom: 12px;
-}
-
-.left p {
-    line-height: 1.7;
+        url("/static/images/new-dry-fruits.jpg") center/cover no-repeat;
 }
 
 .right {
@@ -143,30 +134,44 @@ a {
 
 <div class="container">
 
-    <div class="left">
-       
-    </div>
+    <div class="left"></div>
 
     <div class="right">
 
         <div class="logo">YogaBite</div>
-        <div class="tagline">Small Bite, Big Nutrition</div>
+
+        <div class="tagline">
+            Small Bite, Big Nutrition
+        </div>
 
         <h2>Welcome Back!</h2>
-        <p class="subtitle">Login to your YogaBite account.</p>
 
+        <p class="subtitle">
+            Login to enjoy healthy and nutritious laddus.
+        </p>
+
+        <!-- Flash Messages -->
         {% with messages = get_flashed_messages() %}
-            {% for message in messages %}
-                <p class="message">{{ message }}</p>
-            {% endfor %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
 
+        <!-- Login Form -->
         <form method="POST" action="{{ url_for('login') }}">
+
+            <!-- CSRF Security Token -->
+            <input type="hidden"
+                   name="csrf_token"
+                   value="{{ csrf_token() }}">
 
             <input
                 type="email"
                 name="email"
                 placeholder="Enter your email"
+                autocomplete="email"
                 required
             >
 
@@ -174,6 +179,7 @@ a {
                 type="password"
                 name="password"
                 placeholder="Enter your password"
+                autocomplete="current-password"
                 required
             >
 
@@ -187,6 +193,7 @@ a {
         </div>
 
     </div>
+
 </div>
 
 </body>

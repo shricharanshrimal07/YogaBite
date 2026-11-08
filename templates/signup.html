@@ -165,18 +165,26 @@ a {
         <h2>Create Your Account</h2>
         <p class="subtitle">Register to enjoy healthy nutrition.</p>
 
+        <!-- Flash Messages -->
         {% with messages = get_flashed_messages() %}
             {% for message in messages %}
                 <p class="message">{{ message }}</p>
             {% endfor %}
         {% endwith %}
 
+        <!-- Signup Form -->
         <form method="POST" action="{{ url_for('signup') }}">
+
+            <!-- CSRF Security Token -->
+            <input type="hidden"
+                   name="csrf_token"
+                   value="{{ csrf_token() }}">
 
             <input
                 type="text"
                 name="full_name"
                 placeholder="Full Name"
+                autocomplete="name"
                 required
             >
 
@@ -184,6 +192,7 @@ a {
                 type="email"
                 name="email"
                 placeholder="Email Address"
+                autocomplete="email"
                 required
             >
 
@@ -193,6 +202,7 @@ a {
                 placeholder="Mobile Number"
                 pattern="[0-9]{10}"
                 maxlength="10"
+                autocomplete="tel"
                 required
             >
 
@@ -201,6 +211,7 @@ a {
                 name="password"
                 placeholder="Create Password (minimum 8 characters)"
                 minlength="8"
+                autocomplete="new-password"
                 required
             >
 
@@ -208,6 +219,8 @@ a {
                 type="password"
                 name="confirm_password"
                 placeholder="Confirm Password"
+                minlength="8"
+                autocomplete="new-password"
                 required
             >
 
@@ -226,3 +239,4 @@ a {
 
 </body>
 </html>
+

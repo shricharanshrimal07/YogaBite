@@ -12,20 +12,18 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #fffaf0;
+            background: #fffaf2;
             color: #333;
         }
-
-        /* Navigation */
 
         header {
             background: #285c3c;
             color: white;
-            padding: 20px 7%;
+            padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -34,114 +32,130 @@
         }
 
         .logo {
-            font-size: 30px;
+            font-size: 27px;
             font-weight: bold;
-            color: #f6d88b;
+            letter-spacing: 1px;
         }
 
-        .tagline {
-            font-size: 12px;
-            color: white;
-            margin-top: 5px;
+        .logo span {
+            color: #f4c46b;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 22px;
             font-size: 15px;
         }
 
         nav a:hover {
-            color: #f6d88b;
+            color: #f4c46b;
         }
 
-        /* Hero section */
+        .logout-form {
+            display: inline;
+        }
+
+        .logout-btn {
+            background: #f4c46b;
+            color: #285c3c;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: white;
+        }
 
         .hero {
-            background: linear-gradient(
-                120deg,
-                #e8f0dc,
-                #fff2d5
-            );
+            min-height: 380px;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url("{{ url_for('static', filename='images/new-dry-fruits.jpg') }}")
+                center/cover no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 65px 20px;
+            color: white;
+            padding: 40px 20px;
         }
 
-        .hero h1 {
-            font-size: 40px;
-            color: #285c3c;
+        .hero-content h1 {
+            font-size: 45px;
             margin-bottom: 15px;
         }
 
-        .hero p {
-            font-size: 17px;
-            color: #555;
-            line-height: 1.7;
+        .hero-content p {
+            font-size: 19px;
+            margin-bottom: 10px;
         }
 
-        .hero button {
-            background: #285c3c;
-            color: white;
-            border: none;
-            padding: 13px 28px;
-            border-radius: 25px;
-            margin-top: 25px;
-            cursor: pointer;
-            font-size: 15px;
+        .tagline {
+            color: #f4c46b;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
-        .hero button:hover {
-            background: #407b50;
+        .welcome {
+            text-align: center;
+            padding: 35px 15px 10px;
         }
 
-        /* Products */
+        .welcome h2 {
+            color: #285c3c;
+            font-size: 28px;
+        }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 55px 25px;
+        .welcome p {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .products-section {
+            padding: 45px 7%;
         }
 
         .section-title {
             text-align: center;
+            color: #285c3c;
+            font-size: 32px;
             margin-bottom: 35px;
         }
 
-        .section-title h2 {
-            color: #285c3c;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #777;
-        }
-
-        .products {
+        .products-container {
             display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.10);
             transition: transform 0.3s;
         }
 
         .product-card:hover {
-            transform: translateY(-7px);
+            transform: translateY(-6px);
         }
 
         .product-card img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            background: #eee;
+            display: block;
         }
 
         .product-info {
@@ -156,48 +170,43 @@
         }
 
         .description {
-            color: #777;
+            color: #666;
             font-size: 14px;
-            line-height: 1.5;
-            min-height: 42px;
-        }
-
-        .weight {
-            color: #888;
-            font-size: 13px;
-            margin-top: 10px;
+            min-height: 38px;
+            margin-bottom: 12px;
         }
 
         .price {
-            font-size: 23px;
-            color: #c47a26;
+            color: #b7791f;
+            font-size: 21px;
             font-weight: bold;
-            margin: 15px 0;
+            margin-bottom: 10px;
         }
 
         .stock {
-            font-size: 13px;
-            color: #39804a;
-            margin-bottom: 15px;
+            color: #285c3c;
+            font-size: 14px;
+            margin-bottom: 12px;
         }
 
-        .out-stock {
+        .out-of-stock {
             color: #c0392b;
+            font-weight: bold;
         }
 
         .buy-btn {
+            display: inline-block;
             background: #285c3c;
             color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
             border: none;
-            padding: 12px 25px;
-            width: 100%;
-            border-radius: 7px;
-            font-size: 15px;
             cursor: pointer;
         }
 
         .buy-btn:hover {
-            background: #407b50;
+            background: #1d422b;
         }
 
         .buy-btn:disabled {
@@ -205,213 +214,185 @@
             cursor: not-allowed;
         }
 
-        /* Empty products */
-
-        .empty {
+        .empty-message {
             text-align: center;
             color: #777;
-            padding: 40px;
+            padding: 30px;
             grid-column: 1 / -1;
         }
 
-        /* Footer */
+        .contact {
+            background: #f1eadc;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contact h2 {
+            color: #285c3c;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            margin: 8px 0;
+        }
 
         footer {
             background: #285c3c;
             color: white;
             text-align: center;
-            padding: 30px 15px;
-            margin-top: 30px;
-        }
-
-        footer h2 {
-            color: #f6d88b;
-            margin-bottom: 10px;
-        }
-
-        footer p {
+            padding: 18px;
             font-size: 14px;
-            line-height: 1.8;
         }
 
-        @media(max-width: 600px) {
+        @media (max-width: 600px) {
             header {
-                justify-content: center;
+                flex-direction: column;
                 text-align: center;
             }
 
-            nav a {
-                margin: 0 8px;
+            nav {
+                justify-content: center;
+                gap: 15px;
             }
 
-            .hero h1 {
-                font-size: 30px;
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 26px;
             }
         }
-
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-
+    <!-- Navigation -->
     <header>
-
-        <div>
-            <div class="logo">YogaBite</div>
-            <div class="tagline">Small Bite, Big Nutrition</div>
-        </div>
+        <div class="logo">Yoga<span>Bite</span></div>
 
         <nav>
             <a href="/">Home</a>
             <a href="#products">Products</a>
             <a href="#contact">Contact</a>
-        </nav>
 
+            <form method="POST"
+                  action="{{ url_for('logout') }}"
+                  class="logout-form">
+
+                <input type="hidden"
+                       name="csrf_token"
+                       value="{{ csrf_token() }}">
+
+                <button type="submit" class="logout-btn">
+                    Logout
+                </button>
+            </form>
+        </nav>
     </header>
 
-
     <!-- Hero Section -->
-
     <section class="hero">
-
-        <h1>Healthy Nutrition in Every Bite!</h1>
-
-        <p>
-            Discover our delicious homemade nutrition laddus.
-            <br>
-            Made with quality ingredients and lots of love.
-        </p>
-
-        <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
-            Explore Our Laddus
-        </button>
-
+        <div class="hero-content">
+            <h1>Welcome to YogaBite</h1>
+            <p>Healthy Nutrition Laddus</p>
+            <p class="tagline">Small Bite, Big Nutrition!</p>
+        </div>
     </section>
 
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <h2>Hello, {{ session.get('full_name', 'Customer') }}!</h2>
+        <p>Discover our delicious and healthy homemade laddus.</p>
+    </section>
 
-    <!-- Product Section -->
+    <!-- Products Section -->
+    <section class="products-section" id="products">
 
-    <section class="container" id="products">
+        <h2 class="section-title">Our Healthy Laddus</h2>
 
-        <div class="section-title">
-
-            <h2>Our Healthy Laddus</h2>
-
-            <p>
-                Fresh, delicious and nutritious laddus for everyone.
-            </p>
-
-        </div>
-
-
-        <div class="products">
+        <div class="products-container">
 
             {% for product in products %}
 
             <div class="product-card">
 
-                <!-- Product Image -->
-
                 {% if product.image_url %}
-
-                   <img
-    src="{{ url_for('static', filename=product.image_url.replace('static/', '').lstrip('/')) }}"
-    alt="{{ product.product_name }}"
-    onerror="this.onerror=null; this.src='/static/images/new-dry-fruits.jpg';"
->
-
+                    <img
+                        src="{{ url_for('static', filename=product.image_url.replace('static/', '').lstrip('/')) }}"
+                        alt="{{ product.product_name }}"
+                        onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/new-dry-fruits.jpg') }}';"
+                    >
                 {% else %}
-
                     <img
                         src="https://placehold.co/500x350/f5ead5/285c3c?text=YogaBite"
-                        alt="Image coming soon"
+                        alt="YogaBite product"
                     >
-
                 {% endif %}
-
-
-                <!-- Product Details -->
 
                 <div class="product-info">
 
                     <h3>{{ product.product_name }}</h3>
 
                     <p class="description">
-                        {{ product.description }}
+                        {{ product.description or 'Healthy and delicious homemade laddu.' }}
                     </p>
 
-                    <p class="weight">
-                        Weight: {{ product.weight }}
+                    <p class="price">
+                        ₹{{ product.price }}
                     </p>
 
-                    <div class="price">
-                        ₹{{ "%.2f"|format(product.price) }}
-                    </div>
+                    {% if product.stock_quantity <= 0 %}
 
-                    {% if product.stock_quantity > 0 %}
-
-                        <p class="stock">
-                            In Stock: {{ product.stock_quantity }}
-                        </p>
-
-                    {% else %}
-
-                        <p class="stock out-stock">
+                        <p class="stock out-of-stock">
                             Out of Stock
                         </p>
 
+                        <button class="buy-btn" disabled>
+                            Out of Stock
+                        </button>
+
+                    {% else %}
+
+                        <p class="stock">
+                            Available: {{ product.stock_quantity }}
+                        </p>
+
+                        <button class="buy-btn" type="button"
+                                onclick="alert('Thank you for choosing YogaBite! Contact us to place your order.')">
+                            Order Now
+                        </button>
+
                     {% endif %}
 
-                    <button
-                        class="buy-btn"
-                        {% if product.stock_quantity <= 0 %}disabled{% endif %}
-                        onclick="alert('Shopping cart will be available in the next development stage!')"
-                    >
-                        {% if product.stock_quantity > 0 %}
-                            Add to Cart
-                        {% else %}
-                            Unavailable
-                        {% endif %}
-                    </button>
-
                 </div>
-
             </div>
 
             {% else %}
 
-                <div class="empty">
-                    <h3>No products available</h3>
-                    <p>Please check your MySQL products table.</p>
-                </div>
+                <p class="empty-message">
+                    No products are available right now. Please visit again soon!
+                </p>
 
             {% endfor %}
 
         </div>
-
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact YogaBite</h2>
+        <p>Freshness, Health and Happiness in Every Bite!</p>
+        <p>Serving Healthy Nutrition Laddus in Solapur.</p>
+        <p>Thank you for choosing YogaBite ❤️</p>
+    </section>
 
     <!-- Footer -->
-
-    <footer id="contact">
-
-        <h2>YogaBite</h2>
-
-        <p>Small Bite, Big Nutrition</p>
-
-        <p>
-            Healthy Food | Natural Ingredients | Delicious Taste
-        </p>
-
-        <p>
-            © 2026 YogaBite. All Rights Reserved.
-        </p>
-
+    <footer>
+        <p>© 2026 YogaBite. All Rights Reserved.</p>
+        <p>Small Bite, Big Nutrition!</p>
     </footer>
 
 </body>
 </html>
-
