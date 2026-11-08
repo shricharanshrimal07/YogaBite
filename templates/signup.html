@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YogaBite | Sign Up</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f3e8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.container {
+    display: flex;
+    width: 950px;
+    max-width: 100%;
+    min-height: 620px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+}
+
+.left {
+    width: 50%;
+    background:
+    linear-gradient(rgba(25,65,42,0.2), rgba(25,65,42,0.45)),
+    url("/static/images/new-dry-fruits.jpg") center/cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    color: white;
+}
+
+.left h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.left p {
+    line-height: 1.7;
+}
+
+.right {
+    width: 50%;
+    padding: 40px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    color: #285c3c;
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tagline {
+    text-align: center;
+    color: #b98738;
+    margin: 7px 0 25px;
+    font-size: 13px;
+}
+
+h2 {
+    color: #285c3c;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 7px 0;
+    outline-color: #285c3c;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    background: #285c3c;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #407b50;
+}
+
+.bottom {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+}
+
+a {
+    color: #285c3c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.message {
+    color: #c0392b;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+@media(max-width: 700px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        width: 100%;
+        padding: 35px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left">
+        <div>
+            <h1>Join the YogaBite Family!</h1>
+            <p>
+                Discover delicious and nutritious laddus
+                made with the goodness of natural ingredients.
+            </p>
+        </div>
+    </div>
+
+    <div class="right">
+
+        <div class="logo">YogaBite</div>
+        <div class="tagline">Small Bite, Big Nutrition</div>
+
+        <h2>Create Your Account</h2>
+        <p class="subtitle">Register to enjoy healthy nutrition.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('signup') }}">
+
+            <input
+                type="text"
+                name="full_name"
+                placeholder="Full Name"
+                required
+            >
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="tel"
+                name="phone"
+                placeholder="Mobile Number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Create Password (minimum 8 characters)"
+                minlength="8"
+                required
+            >
+
+            <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                required
+            >
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+        <div class="bottom">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
